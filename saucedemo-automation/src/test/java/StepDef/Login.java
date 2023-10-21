@@ -7,6 +7,7 @@ import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class Login {
@@ -30,9 +31,9 @@ public class Login {
         driver.findElement(By.name("login-button")).isDisplayed();
     }
 
-    @When("I input valid username")
-    public void iInputValidUsername() {
-        driver.findElement(By.name("user-name")).sendKeys("standard_user");
+    @When("I input empty username")
+    public void iInputEmptyUsername() {
+        driver.findElement(By.name("user-name")).sendKeys("");
     }
 
     @And("I input valid password")
@@ -41,10 +42,27 @@ public class Login {
         driver.findElement(By.name("password")).sendKeys(Keys.ENTER);
     }
 
+    @Then("I should see an error message {string}")
+    public void iShouldSeeAnErrorMessage(String errorMessage) {
+        WebElement errorElement = driver.findElement(By.cssSelector(".error-message-container.error"));
+        assert(errorElement.getText().contains(errorMessage));
+        driver.close();
+        driver.quit();
+    }
+
+    @When("I input valid username")
+    public void iInputValidUsername() {
+        driver.findElement(By.name("user-name")).sendKeys("standard_user");
+    }
+
     @Then("I go to homepage")
     public void iGoToHomepage() {
         driver.findElement(By.name("add-to-cart-sauce-labs-backpack")).isDisplayed();
         driver.close();
         driver.quit();
     }
+
+
+
+
 }
