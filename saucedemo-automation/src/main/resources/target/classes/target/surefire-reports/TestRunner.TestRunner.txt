@@ -1,0 +1,7 @@
+-------------------------------------------------------------------------------
+Test set: TestRunner.TestRunner
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.096 s <<< FAILURE! - in TestRunner.TestRunner
+initializationError(TestRunner.TestRunner)  Time elapsed: 0.003 s  <<< ERROR!
+java.lang.IllegalArgumentException: path must exist: D:\Project\saucedemo-bdd\saucedemo-automation\src\test\resources\Features
+
